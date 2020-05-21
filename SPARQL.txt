@@ -1,0 +1,13 @@
+SELECT DISTINCT ?nama_dpr ?nama_partai ?nama_provinsi WHERE {
+{?dpr dcterms:subject <http://id.dbpedia.org/resource/Kategori:Anggota_DPR_2004-2009>.
+?dpr rdfs:label ?nama_dpr.}
+
+{?dpr dbpedia-owl:party ?partai .}
+UNION {?partai a dbpedia-owl:PoliticalParty .
+?dpr dbpedia-owl:wikiPageWikiLink ?partai .
+?partai rdfs:label ?nama_partai.}
+
+{?provinsi a dbpedia-owl:Province .
+?dpr dbpedia-owl:wikiPageWikiLink ?provinsi .
+?provinsi rdfs:label ?nama_provinsi.}
+}}
